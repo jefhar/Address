@@ -34,6 +34,8 @@ class ZipCode
      */
     private function parseZipCode(string $ZipCode = '000000000')
     {
+        $ZipCode = str_replace('-', '', $ZipCode);
+
         if (strlen($ZipCode) === 0) {
             return $this->parseZipCode();
         }
@@ -44,6 +46,8 @@ class ZipCode
 
         $this->zip5 = substr(str_pad($ZipCode, 9, '0', STR_PAD_RIGHT), 0, 5);
         $this->zip9 = substr(str_pad($ZipCode, 9, '0', STR_PAD_RIGHT), 0, 9);
+
+        return null;
     }
 
     /**
@@ -80,8 +84,20 @@ class ZipCode
         $this->parseZipCode(str_pad($string, 9, '0', STR_PAD_LEFT));
     }
 
+    /**
+     * @return string
+     */
     public function getFullZip()
     {
         return substr($this->zip9, 0, 5) . '-' . substr($this->zip9, 5, 4);
+    }
+
+    /**
+     * @param string $string
+     * @throws InvalidZipCode
+     */
+    public function setZip(string $string)
+    {
+        $this->parseZipCode($string);
     }
 }

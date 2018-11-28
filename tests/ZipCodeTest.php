@@ -191,4 +191,21 @@ class ZipCodeTest extends TestCase
         $ZipCode->setZip5('24680');
         $this->assertEquals('24680-0000', $ZipCode->getFullZip());
     }
+
+    /**
+     * @test
+     * @throws \JefHar\Address\Exception\InvalidZipCode
+     */
+    public function zipCodeRemovesDashesFromSetters()
+    {
+        $ZipCode = new ZipCode('12345-1234');
+        $this->assertEquals('12345-1234', $ZipCode->getFullZip());
+        $this->assertEquals('12345', $ZipCode->getZip5());
+        $this->assertEquals('123451234', $ZipCode->getZip9());
+
+        $ZipCode->setZip('54321-4321');
+        $this->assertEquals('54321-4321', $ZipCode->getFullZip());
+        $this->assertEquals('54321', $ZipCode->getZip5());
+        $this->assertEquals('543214321', $ZipCode->getZip9());
+    }
 }
