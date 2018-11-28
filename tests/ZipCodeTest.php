@@ -196,7 +196,8 @@ class ZipCodeTest extends TestCase
      * @test
      * @throws \JefHar\Address\Exception\InvalidZipCode
      */
-    public function zipCodeRemovesDashesFromSetters() {
+    public function zipCodeRemovesDashesFromSetters()
+    {
         $ZipCode = new ZipCode('12345-1234');
         $this->assertEquals('12345-1234', $ZipCode->getFullZip());
         $this->assertEquals('12345', $ZipCode->getZip5());
