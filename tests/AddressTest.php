@@ -3,6 +3,7 @@
 namespace JefHar\Tests;
 
 use JefHar\Address\Address;
+use JefHar\Address\City;
 use JefHar\Address\ZipCode;
 use PHPUnit\Framework\TestCase;
 
@@ -25,7 +26,7 @@ class AddressTest extends TestCase
     {
         $Address = new Address();
         $ZipCode = new ZipCode();
-        $Address->addZipCode($ZipCode);
+        $Address->setZipCode($ZipCode);
         $this->assertInstanceOf(ZipCode::class, $Address->getZipCode());
         $this->assertEquals('000000000', $Address->getZipCode()->getZip9());
         $this->assertEquals('00000-0000', $Address->getFullZip());
@@ -35,5 +36,31 @@ class AddressTest extends TestCase
 
         $Address = new Address();
         $this->assertEquals('00000-0000', $Address->getFullZip());
+    }
+
+    /**
+     * @test
+     */
+    public function addressCanAddACity()
+    {
+        $Address = new Address();
+        $Boise = new City('Boise');
+        $Address->setCity($Boise);
+
+        $this->assertEquals('Boise', $Address->getCityName());
+        $this->assertInstanceOf(City::class, $Address->getCity());
+        $this->assertEquals('Boise', $Address->getCity()->getName());
+
+        $Austin = new City('Austin');
+        $Address->setCity($Austin);
+
+        $this->assertEquals('Austin', $Address->getCityName());
+        $this->assertInstanceOf(City::class, $Address->getCity());
+        $this->assertEquals('Austin', $Address->getCity()->getName());
+
+        $BlankAddress = new Address();
+        $this->assertEquals('', $BlankAddress->getCityName());
+        $this->assertInstanceOf(City::class, $BlankAddress->getCity());
+        $this->assertEquals('', $BlankAddress->getCity()->getName());
     }
 }

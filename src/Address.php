@@ -11,20 +11,25 @@ namespace JefHar\Address;
 
 class Address
 {
+    /** @var City */
+    private $City;
     /** @var ZipCode */
     private $ZipCode;
 
     /**
-     * @param ZipCode $ZipCode
+     * @return ZipCode
      */
-    public function addZipCode(ZipCode $ZipCode)
-    {
-        $this->ZipCode = $ZipCode;
-    }
-
     public function getZipCode(): ZipCode
     {
         return $this->ZipCode;
+    }
+
+    /**
+     * @param ZipCode $ZipCode
+     */
+    public function setZipCode(ZipCode $ZipCode)
+    {
+        $this->ZipCode = $ZipCode;
     }
 
     /**
@@ -36,6 +41,34 @@ class Address
         if (is_null($this->ZipCode)) {
             $this->ZipCode = new ZipCode();
         }
+
         return $this->ZipCode->getFullZip();
+    }
+
+    /**
+     * @param City $City
+     */
+    public function setCity(City $City)
+    {
+        $this->City = $City;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCityName():string
+    {
+        if (is_null($this->City)) {
+            $this->City = new City();
+        }
+        return $this->City->getName();
+    }
+
+    /**
+     * @return City
+     */
+    public function getCity(): City
+    {
+        return $this->City;
     }
 }
