@@ -53,18 +53,12 @@ class StreetAddress
 
     public function getStreetNumber(): StreetNumber
     {
-        if (is_null($this->StreetNumber)) {
-            $this->StreetNumber = new StreetNumber('');
-        }
 
         return $this->StreetNumber;
     }
 
     public function getStreetName(): StreetName
     {
-        if (is_null($this->StreetName)) {
-            $this->StreetName = new StreetName();
-        }
 
         return $this->StreetName;
     }
