@@ -12,4 +12,16 @@ namespace JefHar\Address;
 class State
 {
 
+    /** @var string */
+    private $name = '';
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $State)
+    {
+        $this->name = $State;
+    }
 }
