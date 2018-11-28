@@ -29,4 +29,16 @@ class CityTest extends TestCase
         $City->setName('Amarillo');
         $this->assertEquals('Amarillo', $City->getName());
     }
+
+    /**
+     * @test
+     */
+    public function cityCanBeInstantiatedWithAName()
+    {
+        $Boise = new City('Boise');
+        $this->assertEquals('Boise', $Boise->getName());
+
+        $Albuquerque = new City('Albuquerque');
+        $this->assertEquals('Albuquerque', $Albuquerque->getName());
+    }
 }
