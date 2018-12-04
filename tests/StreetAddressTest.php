@@ -13,8 +13,8 @@ class StreetAddressTest extends TestCase
      */
     public function canInstantiateClass()
     {
-        $StreetAddress = new StreetAddress();
-        $this->assertInstanceOf(StreetAddress::class, $StreetAddress);
+        $streetAddress = new StreetAddress();
+        $this->assertInstanceOf(StreetAddress::class, $streetAddress);
     }
 
     /**
@@ -22,19 +22,19 @@ class StreetAddressTest extends TestCase
      */
     public function canSeparateStreetNameFromAddress()
     {
-        $Washington = new StreetAddress('5500 Washington');
-        $this->assertInstanceOf(StreetNumber::class, $Washington->getStreetNumber());
-        $this->assertEquals('5500', $Washington->getStreetNumber()->getNumber());
+        $washington = new StreetAddress('5500 Washington');
+        $this->assertInstanceOf(StreetNumber::class, $washington->getStreetNumber());
+        $this->assertEquals('5500', $washington->getStreetNumber()->getNumber());
 
-        $Broadway = new StreetAddress('1414 Broadway');
-        $this->assertInstanceOf(StreetNumber::class, $Broadway->getStreetNumber());
-        $this->assertEquals('1414', $Broadway->getStreetNumber()->getNumber());
+        $broadway = new StreetAddress('1414 Broadway');
+        $this->assertInstanceOf(StreetNumber::class, $broadway->getStreetNumber());
+        $this->assertEquals('1414', $broadway->getStreetNumber()->getNumber());
 
-        $BlankStreet = new StreetAddress();
-        $this->assertInstanceOf(StreetNumber::class, $BlankStreet->getStreetNumber());
-        $this->assertInstanceOf(StreetAddress\StreetName::class, $BlankStreet->getStreetName());
-        $this->assertEquals('', $BlankStreet->getNumber());
-        $this->assertEquals('', $BlankStreet->getStreet());
+        $blankStreet = new StreetAddress();
+        $this->assertInstanceOf(StreetNumber::class, $blankStreet->getStreetNumber());
+        $this->assertInstanceOf(StreetAddress\StreetName::class, $blankStreet->getStreetName());
+        $this->assertEquals('', $blankStreet->getNumber());
+        $this->assertEquals('', $blankStreet->getStreet());
     }
 
     /**
@@ -42,9 +42,15 @@ class StreetAddressTest extends TestCase
      */
     public function addressSeparatesTheStreetName()
     {
-        $StreetAddress = new StreetAddress('5500 Washington Drive East');
-        $this->assertInstanceOf(StreetAddress\StreetName::class, $StreetAddress->getStreetName());
-        $this->assertEquals('Washington Drive East', $StreetAddress->getStreetName()->getName());
-        $this->assertEquals('Washington Drive East', $StreetAddress->getStreet());
+        $streetAddress = new StreetAddress('5500 Washington Drive East');
+        $this->assertInstanceOf(StreetAddress\StreetName::class, $streetAddress->getStreetName());
+        $this->assertEquals('Washington Drive East', $streetAddress->getStreetName()->getName());
+        $this->assertEquals('Washington Drive East', $streetAddress->getStreet());
+    }
+
+    public function streetAddressReturnsAddress()
+    {
+        $streetAddress = new StreetAddress('123 Main Street');
+        $this->assertEquals('123 Main Street', $streetAddress->getAddress());
     }
 }

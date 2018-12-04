@@ -31,4 +31,20 @@ class StateTest extends TestCase
         $BlankState = new State();
         $this->assertEquals('', $BlankState->getName());
     }
+
+    /**
+     * @test
+     */
+    public function stateCanConstructFromString()
+    {
+        $state = new State('CA');
+        $this->assertInstanceOf(State::class, $state);
+        $this->assertEquals('CA', $state->getName());
+
+        $iowa = new State('IA');
+        $this->assertEquals('IA', $iowa->getName());
+
+        $nebraska = new State('Nebraska');
+        $this->assertEquals('Nebraska', $nebraska->getName());
+    }
 }

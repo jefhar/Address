@@ -1,9 +1,8 @@
 <?php
 /**
- * Address
- * SecondaryUnit.php
- * Copyright 2018 Jeff Harris, C11k.
  * PHP Version 7.2
+ *
+ * Address
  */
 declare(strict_types=1);
 

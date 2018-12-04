@@ -72,4 +72,9 @@ class StreetAddress
     {
         return $this->StreetNumber->getNumber();
     }
+
+    public function getAddress():string
+    {
+        return $this->getNumber() . ' ' . $this->getStreet();
+    }
 }

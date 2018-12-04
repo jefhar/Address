@@ -11,7 +11,6 @@ namespace JefHar\Address\StreetAddress;
 
 class StreetName
 {
-
     /** @var string */
     private $name;
 
