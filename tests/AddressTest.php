@@ -4,6 +4,7 @@ namespace JefHar\Tests;
 
 use JefHar\Address\Address;
 use JefHar\Address\City;
+use JefHar\Address\StreetAddress\SecondaryUnit;
 use JefHar\Address\ZipCode;
 use PHPUnit\Framework\TestCase;
 
@@ -62,5 +63,25 @@ class AddressTest extends TestCase
         $this->assertEquals('', $BlankAddress->getCityName());
         $this->assertInstanceOf(City::class, $BlankAddress->getCity());
         $this->assertEquals('', $BlankAddress->getCity()->getName());
+    }
+
+    /**
+     * @test
+     */
+    public function addressCanAddSecondaryUnitDesignation()
+    {
+        $blankAddress = new Address();
+        $this->assertInstanceOf(SecondaryUnit::class, $blankAddress->getSecondaryUnit());
+        $this->assertEquals('', $blankAddress->getSecondaryUnitDesignation());
+
+        $suite = new Address();
+        $secondarySuite = new SecondaryUnit('Suite 425');
+        $suite->addSecondaryUnit($secondarySuite);
+        $this->assertEquals('Suite 425', $suite->getSecondaryUnitDesignation());
+
+        $apartment = new Address();
+        $secondaryApartment = new SecondaryUnit('Apartment 12');
+        $apartment->addSecondaryUnit($secondaryApartment);
+        $this->assertEquals('Apartment 12', $apartment->getSecondaryUnitDesignation());
     }
 }
