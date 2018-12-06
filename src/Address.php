@@ -15,6 +15,7 @@ class Address
 {
     /** @var City */
     private $City;
+
     /** @var ZipCode */
     private $ZipCode;
 
