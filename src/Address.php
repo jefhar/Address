@@ -9,12 +9,17 @@ declare(strict_types=1);
 
 namespace JefHar\Address;
 
+use JefHar\Address\StreetAddress\SecondaryUnit;
+
 class Address
 {
     /** @var City */
     private $City;
     /** @var ZipCode */
     private $ZipCode;
+
+    /** @var SecondaryUnit */
+    private $secondaryUnit;
 
     /**
      * @return ZipCode
@@ -46,21 +51,14 @@ class Address
     }
 
     /**
-     * @param City $City
-     */
-    public function setCity(City $City)
-    {
-        $this->City = $City;
-    }
-
-    /**
      * @return string
      */
-    public function getCityName():string
+    public function getCityName(): string
     {
         if (is_null($this->City)) {
             $this->City = new City();
         }
+
         return $this->City->getName();
     }
 
@@ -70,5 +68,32 @@ class Address
     public function getCity(): City
     {
         return $this->City;
+    }
+
+    /**
+     * @param City $City
+     */
+    public function setCity(City $City)
+    {
+        $this->City = $City;
+    }
+
+    public function addSecondaryUnit(SecondaryUnit $secondaryUnit)
+    {
+        $this->secondaryUnit = $secondaryUnit;
+    }
+
+    public function getSecondaryUnitDesignation(): string
+    {
+        return $this->getSecondaryUnit()->getDesignator();
+    }
+
+    public function getSecondaryUnit(): SecondaryUnit
+    {
+        if (is_null($this->secondaryUnit)) {
+            $this->secondaryUnit = new SecondaryUnit();
+        }
+
+        return $this->secondaryUnit;
     }
 }
