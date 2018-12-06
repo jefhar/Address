@@ -2,6 +2,7 @@
   "name": "jefharr/address",
   "description": "An encapsulation of an address.",
   "type": "library",
+  "homepage": "https://github.com/jefhar/Address",
   "license": "MIT",
   "authors": [
     {
