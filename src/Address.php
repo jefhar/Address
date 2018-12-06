@@ -39,37 +39,39 @@ class Address
     {
         $numArgs = func_num_args();
 
-        if ($numArgs == 0) {
-            return;
+        switch ($numArgs) {
+            case 0:
+                return;
+                break;
+            case 1:
+                $this->setStreetAddress(new StreetAddress(func_get_arg(0)));
+
+                return;
+                break;
+            case 4:
+                $this->setStreetAddress(new StreetAddress(func_get_arg(0)));
+                $this->setCity(new City(func_get_arg(1)));
+                $this->setState(new State(func_get_arg(2)));
+                $this->setZipCode(new ZipCode(func_get_arg(3)));
+
+                return;
+                break;
+            case 5:
+                $this->setStreetAddress(new StreetAddress(func_get_arg(0)));
+                $this->setSecondaryUnit(new SecondaryUnit(func_get_arg(1)));
+                $this->setCity(new City(func_get_arg(2)));
+                $this->setState(new State(func_get_arg(3)));
+                $this->setZipCode(new ZipCode(func_get_arg(4)));
+
+                return;
+                break;
+
+            default:
+                throw new InvalidAddress(
+                    InvalidAddress::MESSAGE_WRONG_NUMBER_OF_ARGUMENTS,
+                    InvalidAddress::CODE_WRONG_NUMBER_OF_ARGUMENTS
+                );
         }
-
-        if ($numArgs == 1) {
-            $this->setStreetAddress(new StreetAddress(func_get_arg(0)));
-
-            return;
-        }
-
-        if ($numArgs == 4) {
-            $this->setStreetAddress(new StreetAddress(func_get_arg(0)));
-            $this->setCity(new City(func_get_arg(1)));
-            $this->setState(new State(func_get_arg(2)));
-            $this->setZipCode(new ZipCode(func_get_arg(3)));
-
-            return;
-        }
-        if ($numArgs == 5) {
-            $this->setStreetAddress(new StreetAddress(func_get_arg(0)));
-            $this->setSecondaryUnit(new SecondaryUnit(func_get_arg(1)));
-            $this->setCity(new City(func_get_arg(2)));
-            $this->setState(new State(func_get_arg(3)));
-            $this->setZipCode(new ZipCode(func_get_arg(4)));
-
-            return;
-        }
-        throw new InvalidAddress(
-            InvalidAddress::MESSAGE_WRONG_NUMBER_OF_ARGUMENTS,
-            InvalidAddress::CODE_WRONG_NUMBER_OF_ARGUMENTS
-        );
     }
 
     /**
@@ -122,6 +124,11 @@ class Address
         return $this->City;
     }
 
+    public function setCity(City $City)
+    {
+        $this->City = $City;
+    }
+
     /**
      * @return string
      */
@@ -158,6 +165,10 @@ class Address
         return $this->getStreetAddress()->getAddress();
     }
 
+    /*
+     *  @param City $City
+    */
+
     /**
      * @return StreetAddress
      */
@@ -168,14 +179,6 @@ class Address
         }
 
         return $this->StreetAddress;
-    }
-
-    /*
-     *  @param City $City
-    */
-    public function setCity(City $City)
-    {
-        $this->City = $City;
     }
 
     /**
