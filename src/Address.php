@@ -15,8 +15,10 @@ class Address
 {
     /** @var City */
     private $City;
+
     /** @var ZipCode */
     private $ZipCode;
+
     /** @var SecondaryUnit */
     private $secondaryUnit;
 
@@ -50,14 +52,6 @@ class Address
     }
 
     /**
-     * @param City $City
-     */
-    public function setCity(City $City)
-    {
-        $this->City = $City;
-    }
-
-    /**
      * @return string
      */
     public function getCityName(): string
@@ -77,13 +71,12 @@ class Address
         return $this->City;
     }
 
-    public function getSecondaryUnit(): SecondaryUnit
+    /**
+     * @param City $City
+     */
+    public function setCity(City $City)
     {
-        if (is_null($this->secondaryUnit)) {
-            $this->secondaryUnit = new SecondaryUnit();
-        }
-
-        return $this->secondaryUnit;
+        $this->City = $City;
     }
 
     public function addSecondaryUnit(SecondaryUnit $secondaryUnit)
@@ -94,5 +87,14 @@ class Address
     public function getSecondaryUnitDesignation(): string
     {
         return $this->getSecondaryUnit()->getDesignator();
+    }
+
+    public function getSecondaryUnit(): SecondaryUnit
+    {
+        if (is_null($this->secondaryUnit)) {
+            $this->secondaryUnit = new SecondaryUnit();
+        }
+
+        return $this->secondaryUnit;
     }
 }

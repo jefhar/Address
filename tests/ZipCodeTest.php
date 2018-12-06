@@ -208,4 +208,5 @@ class ZipCodeTest extends TestCase
         $this->assertEquals('54321', $ZipCode->getZip5());
         $this->assertEquals('543214321', $ZipCode->getZip9());
     }
+
 }
