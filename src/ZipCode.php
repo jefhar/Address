@@ -59,20 +59,20 @@ class ZipCode
     }
 
     /**
-     * @return string
-     */
-    public function getZip9(): string
-    {
-        return $this->zip9;
-    }
-
-    /**
      * @param string $string
      * @throws InvalidZipCode
      */
     public function setZip5(string $string)
     {
         $this->parseZipCode(str_pad($string, 5, '0', STR_PAD_LEFT));
+    }
+
+    /**
+     * @return string
+     */
+    public function getZip9(): string
+    {
+        return $this->zip9;
     }
 
     /**

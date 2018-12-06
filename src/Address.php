@@ -42,11 +42,13 @@ class Address
         if ($numArgs == 0) {
             return;
         }
+
         if ($numArgs == 1) {
             $this->setStreetAddress(new StreetAddress(func_get_arg(0)));
 
             return;
         }
+
         if ($numArgs == 4) {
             $this->setStreetAddress(new StreetAddress(func_get_arg(0)));
             $this->setCity(new City(func_get_arg(1)));
@@ -121,14 +123,6 @@ class Address
     }
 
     /**
-     * @param City $City
-     */
-    public function setCity(City $City)
-    {
-        $this->City = $City;
-    }
-
-    /**
      * @return string
      */
     public function getSecondaryUnitDesignation(): string
@@ -174,6 +168,14 @@ class Address
         }
 
         return $this->StreetAddress;
+    }
+
+    /*
+     *  @param City $City
+    */
+    public function setCity(City $City)
+    {
+        $this->City = $City;
     }
 
     /**
