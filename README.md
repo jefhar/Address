@@ -1,4 +1,5 @@
 # Address
+[![CircleCI](https://circleci.com/gh/jefhar/Address/tree/master.svg?style=svg)](https://circleci.com/gh/jefhar/Address/tree/master)
 
 A simple encapsulation of a US Address.
 
