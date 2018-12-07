@@ -41,29 +41,25 @@ class Address
 
         switch ($numArgs) {
             case 0:
-                return;
                 break;
+
             case 1:
                 $this->setStreetAddress(new StreetAddress(func_get_arg(0)));
-
-                return;
                 break;
+
             case 4:
                 $this->setStreetAddress(new StreetAddress(func_get_arg(0)));
                 $this->setCity(new City(func_get_arg(1)));
                 $this->setState(new State(func_get_arg(2)));
                 $this->setZipCode(new ZipCode(func_get_arg(3)));
-
-                return;
                 break;
+
             case 5:
                 $this->setStreetAddress(new StreetAddress(func_get_arg(0)));
                 $this->setSecondaryUnit(new SecondaryUnit(func_get_arg(1)));
                 $this->setCity(new City(func_get_arg(2)));
                 $this->setState(new State(func_get_arg(3)));
                 $this->setZipCode(new ZipCode(func_get_arg(4)));
-
-                return;
                 break;
 
             default:
@@ -164,10 +160,6 @@ class Address
     {
         return $this->getStreetAddress()->getAddress();
     }
-
-    /*
-     *  @param City $City
-    */
 
     /**
      * @return StreetAddress
